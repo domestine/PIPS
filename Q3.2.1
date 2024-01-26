@@ -60,3 +60,12 @@ cheat <- function(question_nr) {
 }
 
 cheat(2)
+
+make_art <- function(seed) {
+  set.seed(seed)
+  art_data <- matrix(runif(10000, min = 0, max = 1), nrow = 100) 
+  print("Randomly generated pixelated fiiiiire!")
+  heatmap(art_data, Rowv=NA,Colv=NA, cexRow = NA, cexCol = NA)
+  }
+
+make_art(1234)
