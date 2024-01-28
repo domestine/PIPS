@@ -1,3 +1,6 @@
+
+# Q3.2.1 ########################################################################
+# Reminder function
 remind_me <- function() {
   reminder <- "Please bulk order online once a month: 2kg Quinoa, 3kg Oats, 1.5kg Rice"
   return(reminder)
@@ -5,9 +8,12 @@ remind_me <- function() {
 
 remind_me()
 
+
+# Q3.2.1 ########################################################################
+# Choose whether you want the answer to question 1, 2, or 3 in assignment 3.1
 cheat <- function(question_nr) {
   if (question_nr == 1) {
-    print(deparse({
+    answer <- '
       install.packages("truncnorm")
       library(truncnorm)
       
@@ -23,9 +29,9 @@ cheat <- function(question_nr) {
       rounded_grades <- round(grades * 2) / 2
       
       hist(rounded_grades, breaks = seq(0, 10, by = 0.5))
-    }))
+    '
   } else if (question_nr == 2) {
-    print(deparse({
+    answer <- '
       df <- read.csv2(
         "schiphol_data.csv",
         header = TRUE,
@@ -40,10 +46,10 @@ cheat <- function(question_nr) {
       ggplot(data = df_70) +
         geom_point(mapping = aes(x = DATE, y = TMIN),
                    color = "blue")
-    }))
+    '
   } else if (question_nr == 3) {
-    print(deparse({
-      install.packages('titanic')
+    answer <- '
+      install.packages("titanic")
       library(titanic)
       
       df_tit <- titanic_train
@@ -55,17 +61,19 @@ cheat <- function(question_nr) {
       )))) +
         geom_bar(stat = "count") +
         labs(fill = "How did it go?")
-    }))
+    '
   }
-}
+return (answer)}
 
-cheat(2)
+cat(paste(cheat(2), collapse = "\n"))
 
+# Q3.2.2 ########################################################################
+# Enter a random seed, the art shows up as a plot.
 make_art <- function(seed) {
   set.seed(seed)
   art_data <- matrix(runif(10000, min = 0, max = 1), nrow = 100) 
   print("Your created a unique version of a: Randomly generated pixelated fiiiiire! Is this art or can we get rid of it?")
   heatmap(art_data, Rowv=NA,Colv=NA, cexRow = NA, cexCol = NA)
-  }
+}
 
 make_art(1234)
